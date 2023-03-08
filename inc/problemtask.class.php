@@ -92,7 +92,7 @@ class PluginPdfProblemTask extends PluginPdfCommon {
                $planification .= "<br>".sprintf(__('%1$s: %2$s'), __('End'),
                                                 Html::convDateTime($data["end"]));
                $planification .= "<br>".sprintf(__('%1$s: %2$s'), __('By'),
-                                                $dbu->getUserName($data["users_id_tech"]));
+                                                User::getAnonymizedNameForUser($data["users_id_tech"]));
                            }
 
 
@@ -104,7 +104,7 @@ class PluginPdfProblemTask extends PluginPdfCommon {
             $pdf->displayLine("</b>".Toolbox::stripTags($lib),
                               Html::convDateTime($data["date"]),
                               Html::timestampToString($data["actiontime"], 0),
-                              Toolbox::stripTags($dbu->getUserName($data["users_id"])),
+                              Toolbox::stripTags(User::getAnonymizedNameForUser($data["users_id"])),
                               Toolbox::stripTags($planification),1);
             $pdf->displayText("<b><i>".sprintf(__('%1$s: %2$s')."</i></b>", __('Description'), ''),
                                                Toolbox::stripTags($data["content"]), 1);
