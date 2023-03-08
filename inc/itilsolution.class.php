@@ -82,7 +82,7 @@ class PluginPdfITILSolution extends PluginPdfCommon {
                                sprintf(__('%1$s %2$s'), $text,
                                        Html::convDateTime($row['date_approval']))."&nbsp;".
                                sprintf(__('%1$s %2$s'), __('By'),
-                                       Toolbox::stripTags($dbu->getUserName($row["users_id_approval"])))
+                                       Toolbox::stripTags(User::getAnonymizedNameForUser($row["users_id_approval"])))
                                ."</i>";
                $pdf->displayText("<b><i>".sprintf(__('%1$s: %2$s'), $title."</i></b>", ''), $sol.
                                  $textapprove);
