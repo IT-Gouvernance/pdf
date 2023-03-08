@@ -69,7 +69,7 @@ class PluginPdfTicket extends PluginPdfCommon {
       if ($job->fields["users_id_recipient"]) {
          $recipient      = new User();
          $recipient->getFromDB($job->fields["users_id_recipient"]);
-         $recipient_name = $recipient->getName();
+         $recipient_name = User::getAnonymizedNameForUser($job->fields["users_id_recipient"]);
       }
 
       $due = $commenttto = $commentttr = $interntto = '';
