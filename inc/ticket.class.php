@@ -303,11 +303,6 @@ class PluginPdfTicket extends PluginPdfCommon {
       foreach ($job->getUsers(CommonITILActor::ASSIGN) as $d) {
          if ($d['users_id']) {
             $tmp = Toolbox::stripTags(User::getAnonymizedNameForUser($d['users_id']));
-            if ($d['alternative_email']) {
-               $tmp .= ' ('.$d['alternative_email'].')';
-            }
-         } else {
-            $tmp = $d['alternative_email'];
          }
          $users[] = $tmp;
       }
