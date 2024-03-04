@@ -467,7 +467,7 @@ abstract class PluginPdfCommon extends CommonGLPI {
             return $pdf->displayLine(
                      '<b><i>'.sprintf(__('%1$s: %2$s'),
                                       __('Technician in charge of the hardware').'</i></b>',
-                                      $dbu->getUserName($item->fields['users_id_tech'])),
+                                      User::getAnonymizedNameForUser($item->fields['users_id_tech'])),
                      '<b><i>'.sprintf(__('%1$s: %2$s'), __('Manufacturer').'</i></b>',
                                       Toolbox::stripTags(Dropdown::getDropdownName('glpi_manufacturers',
                                                                                    $item->fields['manufacturers_id']))));
@@ -498,7 +498,7 @@ abstract class PluginPdfCommon extends CommonGLPI {
          case 'user-management' :
             return $pdf->displayLine(
                      '<b><i>'.sprintf(__('%1$s: %2$s'), __('User').'</i></b>',
-                                      $dbu->getUserName($item->fields['users_id'])),
+                                      User::getAnonymizedNameForUser($item->fields['users_id'])),
                      '<b><i>'.sprintf(__('%1$s: %2$s'), __('Management type').'</i></b>',
                                       ($item->fields['is_global']?__('Global management')
                                                                  :__('Unit management'))));

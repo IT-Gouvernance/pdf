@@ -102,7 +102,7 @@ class PluginPdfTicketTask extends PluginPdfCommon {
             }
             if ($data['users_id_tech'] > 0) {
                $planification .= "<br>".sprintf(__('%1$s: %2$s'), __('By user', 'pdf'),
-                                                $dbu->getUserName($data["users_id_tech"]));
+                                                User::getAnonymizedNameForUser($data["users_id_tech"]));
             }
             if ($data['groups_id_tech'] > 0) {
                $planification .= "<br>".sprintf(__('%1$s: %2$s'), __('By group', 'pdf'),
@@ -121,7 +121,7 @@ class PluginPdfTicketTask extends PluginPdfCommon {
             $pdf->displayLine("</b>".Toolbox::stripTags($lib),
                               Html::convDateTime($data["date"]),
                               Html::timestampToString($data["actiontime"], 0),
-                              Toolbox::stripTags($dbu->getUserName($data["users_id"])),
+                              Toolbox::stripTags(User::getAnonymizedNameForUser($data["users_id"])),
                               $planification);
             $pdf->displayText("<b><i>".sprintf(__('%1$s: %2$s')."</i></b>", __('Description'), ''),
                                                '<br />'.$data["content"], 1);

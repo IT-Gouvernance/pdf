@@ -98,7 +98,7 @@ class PluginPdfItilFollowup extends PluginPdfCommon {
             }
             $pdf->displayLine(Toolbox::stripTags($lib),
                               Html::convDateTime($data["date"]),
-                              Toolbox::stripTags($dbu->getUserName($data["users_id"])));
+                              Toolbox::stripTags(User::getAnonymizedNameForUser($data["users_id"])));
 
         
             $content = Glpi\Toolbox\Sanitizer::unsanitize(Html::entity_decode_deep($data['content']));
